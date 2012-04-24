@@ -1,0 +1,16 @@
+Estax Version 1.0
+Andreas Textor <textor.andreas@googlemail.com>
+
+1) Read documentation at http://kantico.de/texray/estax.xhtml or in doc/ directory
+2) Create your content XML and stylesheet (you can use the templates)
+3) Run make
+
+Estax uses Xalan (http://xml.apache.org/xalan-j/) and Xerces
+(http://xerces.apache.org/xerces-j/), which are released under the
+Apache Licence, and the XSLT Standard Library (http://xsltsl.sourceforge.net/).
+
+If you have Xalan and Xerces installed locally (e.g. xalan.jar/xalan2.jar,
+xercesImpl.jar, serializer.jar, xml-apis.jar for example in /usr/local/java
+you can change the XALANPATH in the Makefile accordingly and delete the jars
+in estax/.
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vim:textwidth=100:tabstop=4:softttabstop=4:noexpandtab -->
+<site
+	version="1.0"
+	description="This is a test. This is a test."
+	keywords="estax template site"
+	stylesheet="style.css"
+	codestyle="vim-dark"
+	dateformat="%b %e %Y"
+	title="Title of page"
+	favicon="favicon.ico"
+	author="John Doe">
+
+	<header>
+		<h1>Title of page</h1>
+	</header>
+
+	<footer>
+		<a href="http://kantico.de/texray/estax.xhtml">
+			<img style="border:0; width:80px; height:31px" 
+				src="estax.png"
+				alt="Created with Estax"/>
+		</a>
+		<a href="http://validator.w3.org/check?uri=referer">
+			<img style="border:0; width:88px; height:31px" 
+				src="http://www.w3.org/Icons/valid-xhtml11-blue"
+				alt="Valid XHTML 1.1"/>
+		</a>
+	</footer>
+
+	<menu>
+		<link tag="page1"/>
+		<link tag="page2" caption="The link to page2"/>
+	</menu>
+
+	<!-- Boxes -->
+
+	<box date="3000-01-01" hidetags="true">
+		<tag tag="page1"/>
+		<content>
+			This box has no title, is displayed always on top of page1 and also has a tag cloud:<br/><br/>
+			<tagcloud/>
+		</content>
+	</box>
+
+	<box date="2009-01-25" title="Super Box">
+		<tag tag="page1"/>
+		<tag tag="lame-tag"/>
+		<content>
+			This box is displayed on page1. Also, it has a tags list.
+		</content>
+	</box>
+
+	<box date="2009-01-24" title="Box on pg 2" hidetags="true">
+		<tag tag="page2"/>
+		<content>
+			This box is displayed on page2. It has no tags list.
+		</content>
+	</box>
+</site>
+

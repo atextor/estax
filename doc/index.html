@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+<head>
+<link type="text/css" rel="stylesheet" href="style.css" />
+<link type="text/css" rel="stylesheet" href="sh_ide-codewarrior.css" />
+<script type="text/javascript" src="sh_main.js"> </script>
+<script type="text/javascript" src="sh_xml.js"> </script>
+<script type="text/javascript" src="sh_scala.js"> </script>
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<link rel="shortcut icon" type="image/x-icon" href="http://kantico.de/texray/favicon.ico" />
+<meta content="TRUE" name="MSSmartTagsPreventParsing" />
+<meta content="no" http-equiv="imagetoolbar" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<title>Estax documentation</title>
+</head>
+<body onload="sh_highlightDocument();">
+<div id="content">
+<div class="box">
+<div class="boxtitle">
+<span class="title">Estax Documentation</span>
+<span class="date">Jan 25 2009</span>
+</div>
+			Estax transforms a single XML file with a certain format into a number
+			of XHTML pages. The pages can contain a menu with links to other pages,
+			headers and footers, and a number of "boxes" that represent the content.
+			Each box can have a title and a date and a number of tags that serve two
+			purposes: They describe the content of that box, and they are used to
+			determine which boxes should form a page. Every box with tag XYZ will be
+			included on page XZY, which will be created by Estax as XYZ.xhtml (it is
+			encouraged to always write all tags in lower case though, to avoid problems
+			with broken links).<br />
+<br />
+
+			Your content XML has the following structure:<br />
+			<pre class="sh_xml sh_sourceCode">
+<span class="sh_keyword">&lt;site&gt;</span>
+	<span class="sh_keyword">&lt;header&gt;</span><span class="sh_comment">&lt;!-- HTML --&gt;</span><span class="sh_keyword">&lt;/header&gt;</span>
+	<span class="sh_keyword">&lt;footer&gt;</span><span class="sh_comment">&lt;!-- HTML --&gt;</span><span class="sh_keyword">&lt;/header&gt;</span>
+	<span class="sh_keyword">&lt;menu&gt;</span>
+		<span class="sh_keyword">&lt;link</span> <span class="sh_type">tag</span><span class="sh_symbol">=</span><span class="sh_string">"sometag"</span><span class="sh_keyword">/&gt;</span>
+		<span class="sh_keyword">&lt;link</span> <span class="sh_type">tag</span><span class="sh_symbol">=</span><span class="sh_string">"category"</span><span class="sh_keyword">&gt;</span>
+			<span class="sh_keyword">&lt;menu&gt;</span>
+				<span class="sh_keyword">&lt;link</span> <span class="sh_type">tag</span><span class="sh_symbol">=</span><span class="sh_string">"subcategory"</span><span class="sh_keyword">/&gt;</span>
+				<span class="sh_comment">&lt;!-- more links --&gt;</span>
+			<span class="sh_keyword">&lt;/menu&gt;</span>
+		<span class="sh_keyword">&lt;/link&gt;</span>
+		<span class="sh_comment">&lt;!-- more links --&gt;</span>
+	<span class="sh_keyword">&lt;/menu&gt;</span>
+	<span class="sh_keyword">&lt;box&gt;</span>
+		<span class="sh_keyword">&lt;tag</span> <span class="sh_type">tag</span><span class="sh_symbol">=</span><span class="sh_string">"sometag"</span><span class="sh_keyword">/&gt;</span>
+		<span class="sh_comment">&lt;!-- more tags --&gt;</span>
+		<span class="sh_keyword">&lt;content&gt;</span>
+			<span class="sh_comment">&lt;!-- HTML --&gt;</span>
+		<span class="sh_keyword">&lt;/content&gt;</span>
+	<span class="sh_keyword">&lt;/box&gt;</span>
+	<span class="sh_comment">&lt;!-- more boxes --&gt;</span>
+<span class="sh_keyword">&lt;/site&gt;</span>
+</pre>
+			menu, header and footer are optional, as are the tags in boxes.<br />
+<br />
+			You write your page in this format, e.g. site.xml (the name is up to you, it just has
+			to end with .xml), then type "make".
+			Estax generates a directory "site" which contains the generated HTML.<br />
+<br />
+
+			<span class="smalltitle">Tag descriptions</span>
+			<table>
+<tr>
+<th>XML-Tag</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>site</td>
+<td>
+						The outermost ("root") tag of the site. This has the following attributes:
+						<ul>
+<li>version - This should be set to the version of Estax you use, e.g. "1.0"</li>
+<li>description - This is the description that appears in the meta information of your
+								website. <i>Optional</i>
+</li>
+<li>keywords - The keywords that appear in the meta information of your website. <i>Optional.</i>
+</li>
+<li>stylesheet - The stylesheet to use, e.g. "style.css". <i>Optional</i>
+</li>
+<li>codestyle - The name of the style to use for syntax highlighting, e.g. "vim", see section
+								on syntax highlighting. <i>Optional</i>
+</li>
+<li>dateformat - The format to use for the box dates. See
+								<a href="http://xsltsl.sourceforge.net/date-time.html#template.dt:format-date-time">this link </a>
+								for information about the formatters (scroll down a bit to "format"). The default value
+								is "%Y-%m-%d". <i>Optional</i>
+</li>
+<li>title - The title of your page.</li>
+<li>favicon - The icon that is displayed in the browser, e.g. "mysite.ico". <i>Optional</i>
+</li>
+<li>author - The author of this page.</li>
+</ul>
+						&lt;site&gt; can contain &lt;header&gt;, &lt;menu&gt;, &lt;footer&gt; and &lt;box&gt;es.
+					</td>
+</tr>
+<tr>
+<td>header</td>
+<td>
+<i>Optional</i>. Has no attributes. Fill this with HTML; it is displayed above the menu.
+					</td>
+</tr>
+<tr>
+<td>footer</td>
+<td>
+<i>Optional</i>. Has no attributes. Fill this with HTML; it is displayed below the boxes.
+					</td>
+</tr>
+<tr>
+<td>menu</td>
+<td>
+<i>Optional</i>. Has no attributes. Contains &lt;link&gt;s.
+					</td>
+</tr>
+<tr>
+<td>link</td>
+<td>
+						This has the following attributes:
+						<ul>
+<li>tag - The tag this page should link to, e.g. all boxes with this tag are displayed on the page
+								this link points to.</li>
+<li>caption - Display the caption instead of the capitalized tag name. <i>Optional</i>
+</li>
+</ul>
+						A &lt;link&gt; may contain another &lt;menu&gt;.
+					</td>
+</tr>
+<tr>
+<td>box</td>
+<td>
+						The box is used to represent a unit of content, or a section; boxes can not be nested though.
+						Each box has title and date, some content and an automatically generated tag list. It has
+						the following attributes:
+						<ul>
+<li>title - The title to be displayed for this box. The title is optional, if it is ommited, the
+								date of this box won't be displayed as well. <i>Optional</i>
+</li>
+<li>date - The date to displayed for this box. The date has the format YYYY-MM-DD, use
+								dateformat attribute in &lt;site&gt; to format the date as you like. <i>Optional</i>
+</li>
+<li>hidetags - Set this to "true" if you don't want a tag list generated for this box. <i>Optional</i>
+</li>
+<li>id - If you want the &lt;div&gt; this is generated for the box to have an id (for example to
+								allow for a special CSS formatting of this box), set it using the id attribute. <i>Optional</i>
+</li>
+</ul>
+						&lt;box&gt; can contain a number of &lt;tag&gt;s and one &lt;content&gt; that contains your HTML.
+						If you want a message to appear at the top of page, you can use a box with hidetags="true", no title and
+						a date that will alwas be sorted on top (like "3000-01-01" - it won't be displayed without a title, but
+						still be used for sorting the boxes).
+					</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>
+						This has the following attributes:
+						<ul>
+<li>tag - A String that represents this tag. The tag string should be all lowercase and should
+								not contain whitespaces.</li>
+</ul>
+						A &lt;link&gt; may contain another &lt;menu&gt;.
+					</td>
+</tr>
+<tr>
+<td>tagcloud</td>
+<td>
+						Has no attributes. Creates a cloud of tags that link to the respective pages. If you want a separate
+						tags page, create a box with a content that contains only &lt;tagcloud&gt;.
+					</td>
+</tr>
+<tr>
+<td>listing</td>
+<td>
+						This has the following attributes:
+						<ul>
+<li>language - Determines the language of this listing, for syntax highlighting. See the syntax
+								highlighting section for details. <i>Optional</i>
+</li>
+</ul>
+						The &lt;listing&gt; is translated into a &lt;pre&gt; tag, which means that formatting is preserved.
+						The leading tabs that you use to indent the source code in the content XML are removed though, so that
+						the source code in the resulting HTML will have no excess left margin (see the example in the main
+						<a href="http://www.kantico.de/texray/estax.xhtml">Estax</a> post. The C source code is nicely indented in the XML, it aligns with the surrounding
+						&lt;listings&gt; tag).
+					</td>
+</tr>
+<tr>
+<td>space</td>
+<td>
+						Has no attributes. Generates a single nonbreakable space in the resulting HTML. Note that if you use
+						a &amp;bsp; directly, this will be not appear as an entity in the HTML but will be evaluated by Estax.
+					</td>
+</tr>
+</table>
+			<br />
+<br />
+			<span class="smalltitle">Syntax Highlighting</span>
+<br />
+<br />
+			To get nice syntax highlighting you have to do the following:
+			<ul>
+<li>Go to <a href="http://shjs.sourceforge.net/">http://shjs.sourceforge.net/</a> and select a theme you
+					like. Download <a href="http://shjs.sourceforge.net/sh_main.js">sh_main.js</a>, the theme css
+					(from <a href="http://shjs.sourceforge.net/css/">here</a>) and the language definition files you like
+					to use from <a href="http://shjs.sourceforge.net/lang/">here</a>.</li>
+<li>Put the files (say, sh_main.js, sh_vim-dark.css and sh_scala.js) in the directory where your content XML is.</li>
+<li>In &lt;site&gt; set the codestyle attribute to "vim-dark", then
+					write &lt;listing language="scala"&gt; ... &lt;listing&gt;.</li>
+</ul>
+			That's all.
+
+			<br />
+<br />
+			<span class="smalltitle">Estax Stylesheets</span>
+<br />
+<br />
+			The easiest way to generate a CSS for an Estax-generated page is to look at the page source.
+			Basically, a &lt;box&gt; becomes a &lt;div&gt;, the &lt;menu&gt; becomes a &lt;div&gt; with the "menu"
+			class and the &lt;link&gt;s within become a &lt;ul&gt;. You can look at the
+			<a href="http://www.kantico.de/texray/style.css">stylesheet</a> of this page to see how it can be written.
+</div>
+</div>
+</body>
+</html>

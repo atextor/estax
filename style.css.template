@@ -1,0 +1,65 @@
+html, body {
+	color: #000000;
+	background-color: #ffffff;
+	margin: 30px auto;
+	font: 13px "Bitstream Vera Sans", verdana, helvetica, sans-serif;
+}
+
+#content {
+	font: 12px "Bitstream Vera Sans", verdana, helvetica, sans-serif;
+	line-height: 1.5;
+	padding: 0px 20px 20px 20px;
+	background: #eeeeee;
+	text-align: left;
+}
+
+.box {
+	text-align: left;
+	background-color: #dddddd;
+	border: 1px solid #000000;
+	vertical-align: top;
+	/*     top right bottom left */
+	padding: 10px 20px 10px 20px;
+}
+
+.boxtags {
+	padding-top: 5px;
+	margin-top: 15px;
+	border-top: 1px solid #ff0000;
+}
+
+.boxtitle {
+	border-bottom: 2px solid #000000;
+	text-align: right;
+}
+
+.boxtitle .title { float: left; }
+
+.menu0 { background-color: #f00; }
+
+.menu .menulist {
+	padding: 0;
+	margin: 0;
+	font: 13px "Bitstream Vera Sans", verdana, helvetica, sans-serif;
+}
+
+.menu .menulist li { 
+	display: inline; 
+	list-style: none;
+	margin: 0;
+}
+
+#footer { margin: 10px; text-align: center; }
+
+.cloudtag1 { font-size:11px; }
+.cloudtag2 { font-size:14px; }
+.cloudtag3 { font-size:17px; }
+.cloudtag4 { font-size:20px; }
+.cloudtag5 { font-size:23px; }
+.cloudtag6 { font-size:26px; }
+.cloudtag7 { font-size:29px; }
+.cloudtag8 { font-size:31px; }
+.cloudtag9 { font-size:34px; }
+.cloudtag10 { font-size:37px; }
+
+
